@@ -27,10 +27,19 @@ let odpovediUl = document.querySelector("#odpovedi");
 let kolikZobrazeno = 0;
 function nacteniStranky() {
   nactiOtazku();
-  let vysledky = document.createElement("div");
+  vytvorVysledky();
+}
+
+let vysledky;
+
+function vytvorVysledky() {
+  vysledky = document.createElement("div");
   vysledky.id = "vysledky";
   kviz.appendChild(vysledky);
-  console.log("vysledky");
+  let poradi = document.createElement("h2");
+  poradi.id = "poradi";
+  vysledky.appendChild(poradi);
+  poradi.textContent = 'Tvoje hodnocení';
 }
 
 function nactiOtazku() {
@@ -43,9 +52,13 @@ function nactiOtazku() {
   }
 }
 
+let indexOdpovedi;
+
 let moznosti = document.querySelectorAll("li");
 moznosti.forEach((moznost) => {
-  moznost.addEventListener("click", function () {
+  moznost.addEventListener("click", function(moznost) {
+    let moznostT = moznost.target;
+    indexOdpovedi = parseInt(moznostT.dataset.odpoved);
     ulozVysledky();
     if (kolikZobrazeno <= 1) {
       kolikZobrazeno = kolikZobrazeno + 1;
@@ -54,16 +67,46 @@ moznosti.forEach((moznost) => {
     } else {
       otazkaDiv.style.display = "none";
       odpovediUl.style.display = "none";
+      vysledky.style.display = "block";
     }
   });
 });
 
+let pocetSpravnych = 0;
+
 function ulozVysledky() {
   let otazkaText = document.createElement("p");
-  document.querySelector("#vysledky").appendChild(otazkaText);
+  otazkaText.style.fontWeight = 'bold';
+  vysledky.appendChild(otazkaText);
   otazkaText.textContent =
     kolikZobrazeno + 1 + ". " + otazky[kolikZobrazeno].otazka;
+
+  let tvojeOdpoved = document.createElement("p");
+  vysledky.appendChild(tvojeOdpoved);
+  tvojeOdpoved.textContent = 'Tvoje odpověď: ' + otazky[kolikZobrazeno].odpovedi[indexOdpovedi];
+
+  let spravnost = document.createElement("p");
+  vysledky.appendChild(spravnost);
+  if (indexOdpovedi === otazky[kolikZobrazeno].spravna) {
+    spravnost.textContent = 'To je SPRÁVNĚ.';
+    pocetSpravnych = pocetSpravnych + 1;
+  } else {
+    let indexSpravneOdpovedi = otazky[kolikZobrazeno].spravna;
+    spravnost.textContent = 'Správná odpověď: ' + otazky[kolikZobrazeno].odpovedi[indexSpravneOdpovedi];
+  }
+
+  if (kolikZobrazeno === 2) {
+    let statistika = document.createElement("h2");
+  vysledky.appendChild(statistika);
+  statistika.style.color = '#ff0844';
+  statistika.style.marginTop = '40px';
+  let procenta = Math.floor(pocetSpravnych / otazky.length * 100)
+  statistika.textContent = 'Správně ' + pocetSpravnych + ' ze ' + otazky.length + ' otázek. Úspěšnost ' + procenta + ' %.';
+  }
+  
 }
+
+
 // moznosti.addEventListener("click", function () {
 //   let kolikZobrazeno = kolikZobrazeno + 1;
 //   console.log(kolikZobrazeno);
