@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Superkvíz</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body onload="nacteniStranky()">
+    <h1>Superkvíz</h1>
+    <div class="kviz">
+      <div id="otazka"></div>
+      <ul id="odpovedi">
+        <li id="odpoved0"></li>
+        <li id="odpoved1"></li>
+        <li id="odpoved2"></li>
+      </ul>
+    </div>
+    <!-- přidat <div> pro kvíz -->
+    <!-- do něj přidat <div>y pro samotné držení otázky -->
+    <!-- také nezapomenout na <div> pro výsledek a hodnocení -->
 
-<head>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Superkvíz</title>
-	<link rel="stylesheet" href="style.css">
-</head>
-<body onload="nacteniStranky()">
-
-
-	<h1>Superkvíz</h1>
-	<div class="kviz">
-		<div id="otazka"></div>
-	</div>
-	<!-- přidat <div> pro kvíz -->
-	<!-- do něj přidat <div>y pro samotné držení otázky -->
-	<!-- také nezapomenout na <div> pro výsledek a hodnocení -->
-
-	<script src="kviz.js"></script>
-
-</body>
+    <script src="kviz.js"></script>
+  </body>
 </html>
