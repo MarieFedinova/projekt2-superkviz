@@ -1,21 +1,21 @@
 let otazky = [
   {
-    otazka: "Otázka 1",
-    obrazek: "obrazky/moncicak.jpg",
-    odpovedi: ["Odpověď 11", "Odpověď 12", "Odpověď 13"],
-    spravna: 1,
-  },
-  {
-    otazka: "Otázka 2",
-    obrazek: "obrazky/ovoce.jpg",
-    odpovedi: ["Odpověď 21", "Odpověď 22", "Odpověď 23"],
+    otazka: "Kolika let se dožívá lama?",
+    obrazek: "obrazky/lama1.jpg",
+    odpovedi: ["5-8 let", "10-15 let", "20-25 let"],
     spravna: 2,
   },
   {
-    otazka: "Otázka 3",
-    obrazek: "obrazky/snehurka.jpg",
-    odpovedi: ["Odpověď 31", "Odpověď 32", "Odpověď 33"],
+    otazka: "Jak se jmenuje terapie, při které se používá kontakt s lamami?",
+    obrazek: "obrazky/lama2.jpg",
+    odpovedi: ["Lamaterapie", "Argenoterapie", "Alpakoterapie"],
     spravna: 0,
+  },
+  {
+    otazka: "Jak daleko doplivne lama?",
+    obrazek: "obrazky/lama3.jpg",
+    odpovedi: ["1 metr", "4 metry", "8 metrů"],
+    spravna: 1,
   },
 ];
 
@@ -45,6 +45,7 @@ function vytvorVysledky() {
 function nactiOtazku() {
   for (let i = 0; i <= 2; i = i + 1) {
     otazkaDiv.innerHTML = otazky[kolikZobrazeno].otazka;
+    document.querySelector("#obrazek").src = otazky[kolikZobrazeno].obrazek;
     let data = document.querySelector(`${"#odpoved" + i}`);
     data.textContent = otazky[kolikZobrazeno].odpovedi[i];
     data.setAttribute("data-odpoved", i);
@@ -68,6 +69,8 @@ moznosti.forEach((moznost) => {
       otazkaDiv.style.display = "none";
       odpovediUl.style.display = "none";
       vysledky.style.display = "block";
+      vysledky.style.width = "100%";
+      document.querySelector("#obrazek").style.display = "none";
     }
   });
 });
