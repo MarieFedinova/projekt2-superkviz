@@ -109,26 +109,3 @@ function ulozVysledky() {
   
 }
 
-
-// moznosti.addEventListener("click", function () {
-//   let kolikZobrazeno = kolikZobrazeno + 1;
-//   console.log(kolikZobrazeno);
-//   nactiOtazku();
-// });
-
-// let data = document.createElement("li");
-// data.id = "odpoved" + i;
-
-// let odpoved = document.querySelector("#odpoved0");
-// console.log(odpoved);
-// document.querySelector("#odpovedi").appendChild(odpoved);
-//   otazky[0].odpovedi.forEach(pridejOdpoved);
-//   function pridejOdpoved(odpoved) {
-//     let data = document.createElement("li");
-//     data.innerHTML = odpoved;
-//   }
-//   let odpoved = document.querySelector("li");
-//   let obsah = document.createElement("ul");
-//   obsah.id = "odpovedi";
-
-//   otazkaDiv.appendChild(obsah);
